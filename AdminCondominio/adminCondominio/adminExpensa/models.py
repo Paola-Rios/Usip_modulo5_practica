@@ -3,14 +3,15 @@ class Propietario(models.Model):
     carnet = models.CharField(max_length=100,unique=True) 
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    correo= models.EmailField(max_length=254)
+    correo = models.EmailField(max_length=254)
 
-# class Departamento(models.Model):
-#     Departamento= models.CharField(max_length=100, unique=True)
-#     Id_propietario =models.ForeignKey(Propietario, on_delete=models.CASCADE)
-#     bloque= models.CharField(max_length=100)
-#     costoExpensa= models.DecimalField(decimal_places=2, max_digits=10)
-#     fecha_Entrega= DateTimeField(auto_now=True)
+class Departamento(models.Model):
+    departamento_nombre = models.CharField(max_length=100, unique=True)
+    propietario = models.ForeignKey(Propietario, on_delete=models.CASCADE)
+    bloque = models.CharField(max_length=100)
+    costoExpensa = models.DecimalField(decimal_places=2, max_digits=10)
+    fecha_Entrega = models.DateTimeField(auto_now=True)
+
 
 # class Expensa_Agua(models.Model):
 #     Id_Expensa_Agua= models.CharField(max_length=100, unique=True)
