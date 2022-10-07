@@ -1,0 +1,30 @@
+<h1>Propietarios</h1>
+<form action="{% url 'propietario' %}" method="post">
+{% csrf_token %}
+<fieldset>
+    {% if error_message %}
+    <p class="error">{{error_message}}</p>
+    {% endif %}
+    <label for="carnet">Carnet</label>
+    <input type="text" name="carnet"/>
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre"/>
+    <label for="apellido">Apellido</label>
+    <input type="text" name="carnet"/>
+    <label for="correo">Correo</label>
+    <input type="text" name="carnet"/>
+    <br/>
+    <input type="submit" value="Enviar">
+</fieldset>
+</form>
+<!-- 
+<ul>
+    {% for propietario in propietarios %}
+    <li>{{propietario.nombre}}</li>
+    {% endfor %}
+</ul>
+<ul>
+    {% for propietario in propietarios %}
+    <li>{{propietario.carnet}}</li>
+    {% endfor %}
+</ul> -->
