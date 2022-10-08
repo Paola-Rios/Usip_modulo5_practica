@@ -1,9 +1,12 @@
 from django.db import models
 from django.conf import settings
+#validadores
+from .validators import validar_nombrePropietario 
+from .validators import validar_carnetPropietario
 
 class Propietario(models.Model):
-    carnet = models.CharField(max_length=100,unique=True) 
-    nombre = models.CharField(max_length=100)
+    carnet = models.CharField(max_length=100,unique=True, validators=[validar_carnetPropietario]) 
+    nombre = models.CharField(max_length=100, validators= [validar_nombrePropietario])
     apellido = models.CharField(max_length=100)
     correo = models.EmailField(max_length=254)
 
