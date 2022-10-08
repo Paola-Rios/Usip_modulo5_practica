@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Propietario
+from .models import Departamento
+from .models import Expensa_Agua
+from .models import Expensa
+from rest_framework import viewsets
+from .serializers import PropietarioSerializer
+from .serializers import DepartamentoSerializer
+from .serializers import Expensa_AguaSerializer
+from .serializers import ExpensaSerializer
 
 # function view 
 def index (request):
@@ -19,3 +27,20 @@ def propietario(request):
 
     propietarios = Propietario.objects.all()
     return render(request,"propietario.html", {'propietarios': propietarios})
+
+
+class PropietarioViewSet(viewsets.ModelViewSet):
+    queryset = Propietario.objects.all()
+    serializer_class = PropietarioSerializer
+
+class DepartamentoViewSet(viewsets.ModelViewSet):
+    queryset = Departamento.objects.all()
+    serializer_class = DepartamentoSerializer
+
+class Expensa_AguaViewSet(viewsets.ModelViewSet):
+    queryset = Expensa_Agua.objects.all()
+    serializer_class = Expensa_AguaSerializer
+
+class ExpensaViewSet(viewsets.ModelViewSet):
+    queryset = Expensa.objects.all()
+    serializer_class = ExpensaSerializer
